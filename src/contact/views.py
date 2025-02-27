@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import ContactoForm
 from .models import Contact
+from .serializers import ContactSerializer
+from rest_framework import viewsets
 
 def contact(request):
     if request.method == "POST":
@@ -13,3 +15,6 @@ def contact(request):
     
     return render(request, "contact.html", {"form": form})
 
+class ContactViewSet(viewsets.ModelViewSet):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer

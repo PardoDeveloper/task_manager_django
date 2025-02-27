@@ -25,6 +25,9 @@ SECRET_KEY = 'django-insecure-h_1&vor=083bf3!^axiex8^(2sz^j(cev+x4w!!winkd)k7cqe
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8000',
+]
 
 
 # Application definition
@@ -44,11 +47,18 @@ LOCAL_APPS = [
     'contact',
 ]
 
-INSTALLED_APPS = BASE_APPS + LOCAL_APPS
+THIRD_PARTY_APPS = [
+    'rest_framework',  # Aquí van las apps de terceros
+    'corsheaders',
+    'coreapi',
+]
+
+INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -128,3 +138,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS' : 'rest_framework.schemas.coreapi.AutoSchema',
+}
