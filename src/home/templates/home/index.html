@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="flex justify-end mr-[200px] my-[200px]">
+    <div class="text-right">
+        <h1 class="text-5xl font-bold">Welcome to the Tasks Project</h1>
+        <p class="mt-2">This is a simple task management application.</p>
+        <a href="{% url 'tasks_list' %}" class="inline-block mt-4 px-6 py-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-lg shadow-md hover:from-blue-600 hover:to-blue-800 transition-all duration-300">
+            Ver lista de Tareas
+        </a>
+    </div>
+</div>
+
+{% endblock %}
